@@ -7,7 +7,11 @@ import {
 import connection from '../helpers/data/connection';
 import Auth from '../components/pages/Auth/auth';
 import Friends from '../components/pages/Friends/friends';
+import NewFriend from '../components/pages/NewFriend/newFriend';
+import EditFriend from '../components/pages/EditFriend/editFriend';
 import Holidays from '../components/pages/Holidays/holidays';
+import NewHoliday from '../components/pages/NewHoliday/newHoliday';
+import EditHoliday from '../components/pages/EditHoliday/editHoliday';
 import Home from '../components/pages/Home/home';
 import MyNavbar from '../components/MyNavbar/myNavbar';
 import './App.scss';
@@ -66,10 +70,46 @@ class App extends React.Component {
             <MyNavbar isAuthed={authed} logoutClickEvent={logoutClickEvent}/>
             <div className="row">
               <Switch>
-                <PrivateRoute path="/" exact component={Home} authed={this.state.authed} />
-                <PrivateRoute path="/friends" component={Friends} authed={this.state.authed} />
-                <PrivateRoute path="/holidays" component={Holidays} authed={this.state.authed} />
-                <PublicRoute path='/auth' component={Auth} authed={this.state.authed} />
+                <PrivateRoute
+                path="/"
+                exact component={Home}
+                authed={this.state.authed}
+                />
+                <PrivateRoute
+                path="/friends/new"
+                exact component={NewFriend}
+                authed={this.state.authed}
+                />
+                <PrivateRoute
+                path="/friends/:id/edit"
+                exact component={EditFriend}
+                authed={this.state.authed}
+                />
+                <PrivateRoute
+                path="/friends"
+                component={Friends}
+                authed={this.state.authed}
+                />
+                <PrivateRoute
+                path="/holidays/new"
+                exact component={NewHoliday}
+                authed={this.state.authed}
+                />
+                <PrivateRoute
+                path="/holidays"
+                component={Holidays}
+                authed={this.state.authed}
+                />
+                <PrivateRoute
+                path="/holidays/:id/edit"
+                exact component={EditHoliday}
+                authed={this.state.authed}
+                />
+                <PublicRoute
+                path='/auth'
+                component={Auth}
+                authed={this.state.authed}
+                />
               </Switch>
             </div>
           </React.Fragment>
