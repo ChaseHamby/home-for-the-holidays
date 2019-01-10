@@ -6,6 +6,8 @@ import {
 } from 'react-router-dom';
 import connection from '../helpers/data/connection';
 import Auth from '../components/pages/Auth/auth';
+import Friends from '../components/pages/Friends/friends';
+import Holidays from '../components/pages/Holidays/holidays';
 import Home from '../components/pages/Home/home';
 import MyNavbar from '../components/MyNavbar/myNavbar';
 import './App.scss';
@@ -65,7 +67,8 @@ class App extends React.Component {
             <div className="row">
               <Switch>
                 <PrivateRoute path="/" exact component={Home} authed={this.state.authed} />
-                <PrivateRoute path="/home" component={Home} authed={this.state.authed} />
+                <PrivateRoute path="/friends" component={Friends} authed={this.state.authed} />
+                <PrivateRoute path="/holidays" component={Holidays} authed={this.state.authed} />
                 <PublicRoute path='/auth' component={Auth} authed={this.state.authed} />
               </Switch>
             </div>
